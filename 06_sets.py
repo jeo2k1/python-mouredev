@@ -39,16 +39,16 @@ print("Mouri" in my_other_set)
 my_other_set.remove("Moure")
 print(my_other_set)
 
-my_other_set.clear()
+my_other_set.clear() #borra todos los elementos del set
 print(len(my_other_set))
 
-del my_other_set
+del my_other_set #borra el objeto
 # print(my_other_set) NameError: name 'my_other_set' is not defined
 
 # Transformación
 
-my_set = {"Brais", "Moure", 35}
-my_list = list(my_set)
+my_set = {"Brais", "Moure", 35} # se crea cada vez con un orden aleatorio
+my_list = list(my_set) #convierte un set en una lista
 print(my_list)
 print(my_list[0])
 
@@ -56,6 +56,6 @@ my_other_set = {"Kotlin", "Swift", "Python"}
 
 # Otras operaciones
 
-my_new_set = my_set.union(my_other_set)
+my_new_set = my_set.union(my_other_set) #union de 2 set
 print(my_new_set.union(my_new_set).union(my_set).union({"JavaScript", "C#"}))
 print(my_new_set.difference(my_set))
