@@ -4,11 +4,11 @@
 
 from math import pi as PI_VALUE
 import math
-from my_module import sumValue, printValue
-import my_module
+from mi_modulo import sumValue, printValue
+import mi_modulo
 
-my_module.sumValue(5, 3, 1)
-my_module.printValue("Hola Python!")
+mi_modulo.sumValue(5, 3, 1)
+mi_modulo.printValue("Hola Python!")
 
 
 sumValue(5, 3, 1)
