@@ -24,7 +24,7 @@ def print_date(date):
 
 print_date(now)
 
-year_2023 = datetime(2023, 1, 1)
+year_2024 = datetime(2024, 2, 8)
 
 print_date(year_2023)
 
