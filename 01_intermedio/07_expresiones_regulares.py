@@ -2,9 +2,17 @@
 
 ### Regular Expressions ###
 
-import re
+"""
+Las expresiones regulares, también conocidas como regex, 
+podemos definirlas como patrones de textos a través de los cuales podemos establecer la estructura que debe poser 
+una cadena de texto. 
+"""
 
-# match
+import re #  Importamos el módulo 're' para trabajar con las Expresiones Regulares
+
+# match () -> Devuelve un objeto si la coincidencia es exitosa o None en caso contrario.
+# print(re.match("Hola", "Hola Mundo"))   # Coincidiría con "Hola" pero no con "Mundo".
+# 
 
 my_string = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
 my_other_string = "Esta no es la lección número 6: Manejo de ficheros"
@@ -24,26 +32,31 @@ if match is not None:
 
 print(re.match("Expresiones Regulares", my_string))
 
-# search
+
+# search  () -> Devuelve el índice del resultado o -1 si no hay resultados
 
 search = re.search("lección", my_string, re.I)
 print(search)
 start, end = search.span()
 print(my_string[start:end])
 
-# findall
+
+# findall  Encuentra todos los patrones y devuelve una lista con ellos
 
 findall = re.findall("lección", my_string, re.I)
 print(findall)
 
-# split
+
+# split     Divide el string por el patrón (:) y devuelve una lista con los trozos.
 
 print(re.split(":", my_string))
 
-# sub
+
+# sub        Reemplaza todas las ocurrencias del patrón
 
 print(re.sub("[l|L]ección", "LECCIÓN", my_string))
 print(re.sub("Expresiones Regulares", "RegEx", my_string))
+
 
 # Clase en vídeo (09/11/22): https://www.twitch.tv/videos/1648023317
 
