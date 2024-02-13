@@ -9,7 +9,7 @@
 
 # pip install numpy
 import pandas
-from mypackage import arithmetics
+from mypackage import arithmetics #  Importar un módulo de mi propio paquete
 import requests
 import numpy
 
