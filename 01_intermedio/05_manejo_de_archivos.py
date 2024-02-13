@@ -10,7 +10,7 @@ import os
 # .txt file
 
 # Leer, escribir y sobrescribir si ya existe
-txt_file = open("01_intermedio/my_file.txt", "w+")
+txt_file = open("01_intermedio/my_file.txt", "w+", encoding="utf-8")
 
 txt_file.write(
     "Mi nombre es Jorge\nMi apellido es Orellana\n45 años\nY mi lenguaje preferido es Python")
@@ -28,14 +28,14 @@ print(txt_file.readline())
 txt_file.close()
 
 with open("01_intermedio/my_file.txt", "a") as my_other_file:
-    my_other_file.write("\nY Swift")
+    my_other_file.write("\nY Visual Fox Pro")
 
 # os.remove("Intermediate/my_file.txt")
+
 
 # Clase en vídeo (03/11/22): https://www.twitch.tv/videos/1642512950
 
 # .json file
-
 
 json_file = open("01_intermedio/my_file.json", "w+")
 
@@ -43,24 +43,29 @@ json_test = {
     "name": "Jorge Eduardo",
     "surname": "Orellana",
     "age": 45,
-    "languages": ["Python", "Cobol"],
+    "languages": ["Python", "Cobol", "Visual Fox Pro"],
     "website": "https://jeodev.com.ar"}
 
 json.dump(json_test, json_file, indent=2)
+ # metodo dump escribe  el diccionario completo en el archivo json
+ # necesita 2 parametros, el primero es el diccionario a guardar
+ # el segundo es el fichero donde se va a guardar
+ # el tercero es la cantidad de espacios que van a separar los elementos del diccionario
+ # opcionalmente puedes pasar un tercer parametro que indica la cantidad de espacios para cada nivel de indentación
 
-json_file.close()
+json_file.close() #  cerrar el fichero una vez terminado de trabajar con él
 
 with open("01_intermedio/my_file.json") as my_other_file:
     for line in my_other_file.readlines():
         print(line)
 
-json_dict = json.load(open("01_intermedio/my_file.json"))
+json_dict = json.load(open("01_intermedio/my_file.json")) #  Cargamos el contenido del json y lo convertimos en un diccionario
 print(json_dict)
 print(type(json_dict))
 print(json_dict["name"])
 
-# .csv file
 
+# .csv file
 
 csv_file = open("01_intermedio/my_file.csv", "w+")
 
