@@ -1,6 +1,18 @@
 from fastapi import FastAPI # Importamos FastApi
 from pydantic import BaseModel # Importamos la clase base de PyDantic para crear nuestra propia clase.
 
+#### DEFINICION DE CLASES
+def search_user(id: int):
+    users = filter(lambda user: user.id == id, users_list)
+    try:
+        return list(users)[0]
+    except:
+        return {"error": "No se ha encontrado el usuario"}
+
+
+###### FIN DEFINICION DE CLASES
+
+
 app = FastAPI() # Creamos la instancia de FastApi
 
 class User(BaseModel): #  Creación de la clase "User" heredando de BaseModel, es decir, que implementa las validaciones y serializaciones automáticas de PyDantic.
@@ -22,8 +34,13 @@ async def usersjson(): #  Es una función asincrona, por lo que se utiliza "asyn
             {"name": "Juan", "surname": "Orellana", "url": "https://www.tiemposur.com.ar/", "age": 35}]
 
 
-@app.get("/users") # Decorador para definir una ruta GET en /users
-async def users():
-    return users_list
+# PATH
+@app.get('/user/{id}')
+async def user(id: int):
+    return search_user(id)
 
+# QUERY
+@app.get("/userquery/")
+async def user(id: int):
+    return search_user(id)
 
