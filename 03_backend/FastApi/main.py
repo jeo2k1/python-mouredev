@@ -1,6 +1,10 @@
 from fastapi import FastAPI # Importamos FastApi
+from routers import products, users
 
 app = FastAPI() # Creamos la instancia de FastApi
+
+# Agregamos los rutas a nuestra aplicación
+app.include_router(products.router)
 
 @app.get("/") # Decorador para definir una ruta GET en /
 async def root(): #  Es una función asincrona, por lo que se utiliza "async"
