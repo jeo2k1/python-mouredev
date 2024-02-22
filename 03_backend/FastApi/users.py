@@ -1,4 +1,4 @@
-from fastapi import FastAPI # Importamos FastApi
+from fastapi import FastAPI,  HTTPException # Importamos FastApi
 from pydantic import BaseModel # Importamos la clase base de PyDantic para crear nuestra propia clase.
 
 app = FastAPI() # Creamos la instancia de FastApi
@@ -42,10 +42,10 @@ async def user(id: int):
 
 
 # METODO POST CREAR USUARIO
-@app.post('/user/') #  Ruta POST en /user/
+@app.post('/user/', response_model=User, status_code=201) #  Ruta POST en /user/
 async def user(user: User): #  El nombre del parámetro debe ser igual al nombre de la clase
         if type(search_user(user.id)) == User: # Compruebo si el usuario existe antes de crearlo
-            return {"Error al crear el usuario": "El usuario ya existe"} # Devuelve un error si el usuario existe
+            raise HTTPException(status_code=404, detail="El usuario ya existe") #  Si el usuario existe lanza error 404
         else:            
             users_list.append(user) # Si el usuario no existe lo crea correctamente
             return user
