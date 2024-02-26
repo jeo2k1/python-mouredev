@@ -1,19 +1,50 @@
-from fastapi import FastAPI # Importamos FastApi
-from routers import products, users # Importamos los modulos de rutas que hemos creado.
-from fastapi.staticfiles import StaticFiles # Agregamos la clase para manejar archivos estáticos.
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A
 
-app = FastAPI() # Creamos la instancia de FastApi
+### Hola Mundo ###
 
-# Agregamos los rutas a nuestra aplicación
-app.include_router(products.router) # Agrego la ruta de products
-app.include_router(users.router) # Agrego la ruta de users
-app.mount("/static", StaticFiles(directory='static'), name = "static") # Monta el directorio /static en /static del servidor
+# Documentación oficial: https://fastapi.tiangolo.com/es/
 
-@app.get("/") # Decorador para definir una ruta GET en /
-async def root(): #  Es una función asincrona, por lo que se utiliza "async"
-    return "Hola desde FastApi"  # Retornamos un mensaje a través del cuerpo de la respuesta HTTP
+# Instala FastAPI: pip install "fastapi[all]"
+
+from fastapi import FastAPI
+from routers import products, users, basic_auth_users, jwt_auth_users, users_db
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=12475
+app.include_router(products.router)
+app.include_router(users.router)
+
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=14094
+app.include_router(basic_auth_users.router)
+
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=17664
+app.include_router(jwt_auth_users.router)
+
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=20480
+app.include_router(users_db.router)
+
+# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=13618
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+# Url local: http://127.0.0.1:8000
+
+
+@app.get("/")
+async def root():
+    return "Hola FastAPI!"
+
+# Url local: http://127.0.0.1:8000/url
+
 
 @app.get("/url")
 async def url():
-    return {"url_curso": "https://mouredev.com/python"} #  Retornamos un json con el contenido que queremos mostrar
+    return {"url": "https://mouredev.com/python"}
 
+# Inicia el server: uvicorn main:app --reload
+# Detener el server: CTRL+C
+
+# Documentación con Swagger: http://127.0.0.1:8000/docs
+# Documentación con Redocly: http://127.0.0.1:8000/redoc

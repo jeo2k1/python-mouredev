@@ -33,6 +33,7 @@ users_db = {
     }
 }
 
+# FUNCION QUE BUSCA  USUARIO EN LA BBDD Y RETORNA UN OBJETO DEL MODELO USER DB
 def search_user_db(username: str): # funcion para buscar  un usuario en la base de datos
     if username in users_db: #  si el nombre de usuario existe devuelve el diccionario del usuario
         return UserDB(**users_db[username]) #  Retornamos un objeto UserDB con los datos del usuario buscado
